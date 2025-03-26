@@ -66,6 +66,7 @@ export default {
 				dental: {
 					"blue": "#33C3F0",
 					"pink": "#FFC6D9",
+					"pink-800": "#994057", // Added dental-pink-800 color
 					"mint": "#A8E6CF",
 					"peach": "#FFD3B6",
 					"lavender": "#D4C4FB"

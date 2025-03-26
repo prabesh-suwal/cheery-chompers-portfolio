@@ -1,7 +1,6 @@
-
 import React from 'react';
-import AnimatedTooth from './AnimatedTooth';
-import { Award, Trophy, Certificate, Medal } from 'lucide-react';
+import { Trophy, Award, Medal } from 'lucide-react';
+import CertificateIcon from './icons/CertificateIcon';
 import { cn } from '@/lib/utils';
 
 interface AchievementCardProps {
@@ -85,19 +84,19 @@ const Achievements: React.FC = () => {
         
         <div className="flex flex-col gap-6">
           <h3 className="text-2xl font-serif font-bold mb-2 flex items-center gap-2">
-            <Certificate className="w-6 h-6 text-dental-blue" />
+            <CertificateIcon className="w-6 h-6 text-dental-blue" />
             Certifications & Training
           </h3>
           
           <AchievementCard
-            icon={<Certificate className="w-10 h-10 text-dental-mint" />}
+            icon={<CertificateIcon className="w-10 h-10 text-dental-mint" />}
             title="Advanced Pediatric Dental Care"
             description="Specialized training in managing dental anxiety and behavioral issues in young patients."
             year="2023"
           />
           
           <AchievementCard
-            icon={<Certificate className="w-10 h-10 text-dental-peach" />}
+            icon={<CertificateIcon className="w-10 h-10 text-dental-peach" />}
             title="Pediatric Dental Emergency Management"
             description="Certified in handling dental emergencies specific to children and adolescents."
             year="2022"
@@ -105,7 +104,7 @@ const Achievements: React.FC = () => {
           />
           
           <AchievementCard
-            icon={<Certificate className="w-10 h-10 text-dental-pink" />}
+            icon={<CertificateIcon className="w-10 h-10 text-dental-pink" />}
             title="Special Needs Dentistry"
             description="Specialized training in providing dental care for children with special healthcare needs."
             year="2021"
