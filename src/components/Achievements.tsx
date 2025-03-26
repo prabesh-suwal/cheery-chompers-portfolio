@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Trophy, Award, Medal } from 'lucide-react';
 import CertificateIcon from './icons/CertificateIcon';
 import { cn } from '@/lib/utils';
+import AnimatedTooth from './AnimatedTooth';
 
 interface AchievementCardProps {
   icon: React.ReactNode;
