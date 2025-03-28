@@ -1,9 +1,106 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimatedTooth from './AnimatedTooth';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
+  // Initialize EmailJS
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    }
+  }, []);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      // Using environment variables for EmailJS credentials
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing');
+      }
+      
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message
+        },
+        publicKey
+      );
+      
+      if (response.status === 200) {
+        setSubmitStatus({
+          success: true,
+          message: 'Your message has been sent successfully! We\'ll get back to you soon.'
+        });
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'There was an error sending your message. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  // Status alert component
+  const StatusAlert = () => {
+    if (!submitStatus) return null;
+    
+    return (
+      <div className={`p-4 rounded-lg mb-5 ${
+        submitStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+      }`}>
+        <p>{submitStatus.message}</p>
+      </div>
+    );
+  };
+  
   return (
     <section id="contact" className="section">
       <div className="flex flex-col items-center text-center mb-16">
@@ -91,7 +188,9 @@ const Contact: React.FC = () => {
           <div className="glass-card rounded-2xl p-6 md:p-8">
             <h3 className="text-xl font-bold mb-6">Send a Message</h3>
             
-            <form className="space-y-5">
+            <StatusAlert />
+            
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -102,6 +201,9 @@ const Contact: React.FC = () => {
                     id="name"
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-dental-blue/30"
                     placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 
@@ -114,6 +216,9 @@ const Contact: React.FC = () => {
                     id="email"
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-dental-blue/30"
                     placeholder="Your email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
@@ -127,6 +232,9 @@ const Contact: React.FC = () => {
                   id="phone"
                   className="w-full px-4 py-3 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-dental-blue/30"
                   placeholder="Your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               
@@ -139,6 +247,9 @@ const Contact: React.FC = () => {
                   id="subject"
                   className="w-full px-4 py-3 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-dental-blue/30"
                   placeholder="What is this regarding?"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               
@@ -151,15 +262,25 @@ const Contact: React.FC = () => {
                   rows={5}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-dental-blue/30 resize-none"
                   placeholder="Your message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
               
               <button
                 type="submit"
                 className="btn btn-primary w-full flex items-center justify-center gap-2"
+                disabled={isSubmitting}
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {isSubmitting ? (
+                  'Sending...'
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
