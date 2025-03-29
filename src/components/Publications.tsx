@@ -19,7 +19,6 @@ const Publications: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<PublicationType>('all');
 
   const publications: Publication[] = [
-    ,
     {
       type: 'book',
       title: 'Dento-Beat (Compact Capsule for Dental Licensing Exam)',

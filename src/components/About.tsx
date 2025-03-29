@@ -27,7 +27,7 @@ const About: React.FC = () => {
             <div className="absolute -top-3 -left-3 w-full h-full bg-dental-lavender/20 rounded-2xl"></div>
             <div className="relative rounded-2xl overflow-hidden border-2 border-white shadow-lg">
               <BlurImage 
-                src="/src/assets/prakriti_about.jpg"
+                src="/prakriti_about.jpg"
                 alt="Pediatric Dentist" 
                 className="w-full h-auto aspect-[3/4] object-cover"
               />
