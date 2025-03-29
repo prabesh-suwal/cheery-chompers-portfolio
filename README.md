@@ -60,6 +60,27 @@ This project is built with .
 - shadcn-ui
 - Tailwind CSS
 
+## Setting up EmailJS for the Contact Form
+
+The contact form uses EmailJS to send messages. To set it up:
+
+1. Sign up for a free account at [EmailJS](https://www.emailjs.com/)
+2. Create a new Email Service (Gmail, Outlook, etc.)
+3. Create an email template with the following variables:
+   - `name`
+   - `email`
+   - `phone`
+   - `subject`
+   - `message`
+4. Copy your Service ID, Template ID, and Public Key
+5. Create a `.env` file in the root directory based on `.env.example` and add your credentials:
+
+```
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/28ba97bb-d488-400e-849a-3552b2deb4dd) and click on Share -> Publish.
