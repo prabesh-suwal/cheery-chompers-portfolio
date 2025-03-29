@@ -1,14 +1,13 @@
-
 import React, { useState } from 'react';
 import AnimatedTooth from './AnimatedTooth';
 import { BookText, FileText, BookOpen, ChevronRight } from 'lucide-react';
 import BlurImage from './BlurImage';
 import { cn } from '@/lib/utils';
 
-type PublicationType = 'research' | 'blog' | 'all';
+type PublicationType = 'research' | 'blog' | 'all' | 'book';
 
 interface Publication {
-  type: 'research' | 'blog';
+  type: 'research' | 'blog' | 'book';
   title: string;
   description: string;
   date: string;
@@ -18,8 +17,17 @@ interface Publication {
 
 const Publications: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<PublicationType>('all');
-  
+
   const publications: Publication[] = [
+    ,
+    {
+      type: 'book',
+      title: 'Dento-Beat (Compact Capsule for Dental Licensing Exam)',
+      description: 'Concise Yet Complete: An error-free, guaranteed approach to Dental Licensing Exam.',
+      date: '2020',
+      image: 'https://heritagebooks.com.np/wp-content/uploads/2022/02/Safals-Dento-Beat.jpg?q=80&w=1470&auto=format&fit=crop',
+      link: 'https://heritagebooks.com.np/product/dento-beat-compact-capsule-for-dental-licensing-exam/'
+    },
     {
       type: 'research',
       title: 'Effectiveness of Fluoride Varnish in Preventing Early Childhood Caries',
@@ -63,11 +71,11 @@ const Publications: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1606166187734-a4cb74079037?q=80&w=1470&auto=format&fit=crop'
     }
   ];
-  
-  const filteredPublications = activeFilter === 'all' 
-    ? publications 
+
+  const filteredPublications = activeFilter === 'all'
+    ? publications
     : publications.filter(pub => pub.type === activeFilter);
-  
+
   return (
     <section id="publications" className="section bg-gradient-to-b from-white to-dental-lavender/10">
       <div className="flex flex-col items-center text-center mb-16">
@@ -82,24 +90,37 @@ const Publications: React.FC = () => {
           <div className="w-16 h-0.5 bg-dental-blue/20 rounded-full"></div>
           <AnimatedTooth size={24} color="#FFC6D9" animationType="wiggle" />
         </div>
-        
+
         <div className="mt-10 inline-flex bg-muted rounded-full p-1">
           <button
             className={cn(
               "px-5 py-2 rounded-full text-sm font-medium transition-all",
-              activeFilter === 'all' 
-                ? "bg-dental-blue text-white shadow-sm" 
+              activeFilter === 'all'
+                ? "bg-dental-blue text-white shadow-sm"
                 : "hover:bg-muted-foreground/10"
             )}
             onClick={() => setActiveFilter('all')}
           >
             All
           </button>
+
           <button
             className={cn(
               "px-5 py-2 rounded-full text-sm font-medium transition-all",
-              activeFilter === 'research' 
-                ? "bg-dental-blue text-white shadow-sm" 
+              activeFilter === 'book'
+                ? "bg-dental-blue text-white shadow-sm"
+                : "hover:bg-muted-foreground/10"
+            )}
+            onClick={() => setActiveFilter('book')}
+          >
+            Books
+          </button>
+
+          <button
+            className={cn(
+              "px-5 py-2 rounded-full text-sm font-medium transition-all",
+              activeFilter === 'research'
+                ? "bg-dental-blue text-white shadow-sm"
                 : "hover:bg-muted-foreground/10"
             )}
             onClick={() => setActiveFilter('research')}
@@ -109,60 +130,68 @@ const Publications: React.FC = () => {
           <button
             className={cn(
               "px-5 py-2 rounded-full text-sm font-medium transition-all",
-              activeFilter === 'blog' 
-                ? "bg-dental-blue text-white shadow-sm" 
+              activeFilter === 'blog'
+                ? "bg-dental-blue text-white shadow-sm"
                 : "hover:bg-muted-foreground/10"
             )}
             onClick={() => setActiveFilter('blog')}
           >
             Blogs
           </button>
+
+          
         </div>
       </div>
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPublications.map((publication, index) => (
-          <div 
+          <div
             key={index}
             className="glass-card overflow-hidden rounded-xl card-hover animate-zoom-in"
           >
             {publication.image && (
-              <div className="relative h-48">
-                <BlurImage
-                  src={publication.image}
-                  alt={publication.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className={cn(
-                    "px-3 py-1 rounded-full text-xs font-medium",
-                    publication.type === 'research' 
-                      ? "bg-dental-blue/90 text-white" 
-                      : "bg-dental-pink/90 text-dental-pink-800"
-                  )}>
-                    {publication.type === 'research' ? 'Research Paper' : 'Blog Post'}
-                  </span>
+              <a href={publication.link || '#'} target="_blank" rel="noopener noreferrer" >
+                <div className="relative h-48">
+                  <BlurImage
+                    src={publication.image}
+                    alt={publication.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className={cn(
+                      "px-3 py-1 rounded-full text-xs font-medium",
+                      publication.type === 'research'
+                        ? "bg-dental-blue/90 text-white"
+                        : "bg-dental-pink/90 text-dental-pink-800"
+                    )}>
+                      {publication.type === 'research'
+                        ? 'Research Paper'
+                        : publication.type === 'blog'
+                          ? 'Blog Post'
+                          : 'Book'}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </a>
             )}
-            
+
             <div className="p-6">
               <div className="flex items-center gap-2 mb-3">
-                {publication.type === 'research' 
+                {publication.type === 'research'
                   ? <FileText className="w-4 h-4 text-dental-blue" />
                   : <BookOpen className="w-4 h-4 text-dental-pink" />
                 }
                 <span className="text-xs text-muted-foreground">{publication.date}</span>
               </div>
-              
+
               <h3 className="text-lg font-medium mb-3">
                 {publication.title}
               </h3>
-              
+
               <p className="text-sm text-muted-foreground mb-4">
                 {publication.description}
               </p>
-              
+
               <button className="text-dental-blue flex items-center gap-1 text-sm font-medium hover:underline">
                 Read More <ChevronRight className="w-4 h-4" />
               </button>
@@ -170,7 +199,7 @@ const Publications: React.FC = () => {
           </div>
         ))}
       </div>
-      
+
       <div className="flex justify-center mt-12">
         <a
           href="#"

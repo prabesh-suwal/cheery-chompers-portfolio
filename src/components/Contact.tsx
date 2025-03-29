@@ -133,7 +133,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p className="text-muted-foreground">+977 9812345678</p>
+                  <p className="text-muted-foreground">+977 9843159433</p>
                 </div>
               </div>
               
@@ -143,7 +143,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-muted-foreground">dr.smile@pediatricdental.com</p>
+                  <p className="text-muted-foreground">basukalaprakriti@gmail.com</p>
                 </div>
               </div>
               
@@ -153,7 +153,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Office Location</h4>
-                  <p className="text-muted-foreground">Children's Dental Center<br/>BPKHS, Dharan, Nepal</p>
+                  <p className="text-muted-foreground">College of Dental Surgery<br/>BPKIHS, Dharan, Nepal</p>
                 </div>
               </div>
               
@@ -163,7 +163,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Consultation Hours</h4>
-                  <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 5:00 PM<br/>Saturday: 9:00 AM - 2:00 PM</p>
+                  <p className="text-muted-foreground">Sunday - Thrusday: 9:00 AM - 5:00 PM<br/>Friday: 9:00 AM - 1:00 PM</p>
                 </div>
               </div>
             </div>
@@ -175,11 +175,11 @@ const Contact: React.FC = () => {
               For dental emergencies outside of regular hours, please call:
             </p>
             <a 
-              href="tel:+9779876543210" 
+              href="tel:+9843159433" 
               className="btn btn-primary flex items-center justify-center gap-2 w-full"
             >
               <Phone className="w-5 h-5" />
-              +977 9876543210
+              +977 9843159433
             </a>
           </div>
         </div>

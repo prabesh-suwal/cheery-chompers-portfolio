@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-dental-blue/20 to-dental-pink/20 rounded-full animate-pulse-gentle"></div>
             <div className="absolute inset-4 overflow-hidden rounded-full border-4 border-white shadow-lg">
               <BlurImage 
-                src="https://images.unsplash.com/photo-1609902726285-00668009f004?q=80&w=1470&auto=format&fit=crop"
+                src="/src/assets/prakriti.jpg"
                 alt="Pediatric Dentist" 
                 className="w-full h-full object-cover"
               />

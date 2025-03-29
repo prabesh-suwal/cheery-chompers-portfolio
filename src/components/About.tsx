@@ -11,7 +11,7 @@ const About: React.FC = () => {
         <span className="text-sm uppercase tracking-widest text-dental-blue font-medium mb-2">
           About Me
         </span>
-        <h2 className="section-title">Hi, I'm Dr. Smile</h2>
+        <h2 className="section-title">Hi, I'm Dr. Prakriti Basukala</h2>
         <div className="flex gap-3 items-center mt-3">
           <AnimatedTooth size={24} color="#FFD3B6" animationType="pulse" />
           <div className="w-16 h-0.5 bg-dental-blue/20 rounded-full"></div>
@@ -27,7 +27,7 @@ const About: React.FC = () => {
             <div className="absolute -top-3 -left-3 w-full h-full bg-dental-lavender/20 rounded-2xl"></div>
             <div className="relative rounded-2xl overflow-hidden border-2 border-white shadow-lg">
               <BlurImage 
-                src="https://images.unsplash.com/photo-1594067598377-478c61d59f3f?q=80&w=1374&auto=format&fit=crop"
+                src="/src/assets/prakriti_about.jpg"
                 alt="Pediatric Dentist" 
                 className="w-full h-auto aspect-[3/4] object-cover"
               />
@@ -35,7 +35,7 @@ const About: React.FC = () => {
             <div className="absolute -right-4 -bottom-4 bg-white p-4 rounded-xl shadow-lg">
               <div className="flex items-center gap-2 text-dental-blue">
                 <Smile className="w-5 h-5" />
-                <span className="font-medium">10+ Years Experience</span>
+                <span className="font-medium">4+ Years Experience</span>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ const About: React.FC = () => {
           </p>
           
           <p className="text-lg mb-8 leading-relaxed">
-            Currently pursuing my Masters in Pedodontics at BPKHS in 2024, I bring over 2 years of internship experience to my practice. I believe in a holistic approach to dental care that prioritizes gentle techniques, patient education, and preventive measures.
+            Currently pursuing my Masters in Pedodontics at BPKHS in 2024, I bring over 1 year of internship and 3 years of professional experience to my practice. I believe in a holistic approach to dental care that prioritizes gentle techniques, patient education, and preventive measures.
           </p>
           
           <div className="grid sm:grid-cols-3 gap-5 mb-8">

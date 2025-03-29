@@ -63,11 +63,11 @@ const Achievements: React.FC = () => {
           
           <AchievementCard
             icon={<Trophy className="w-10 h-10 text-yellow-500" />}
-            title="Outstanding Pediatric Dental Care"
-            description="Recognized for exceptional care and innovative approaches to pediatric dentistry by the Dental Association."
-            year="2023"
+            title="Best Poster Award in 45th ISPPD Annual Conference"
+            description="Awarded for the best poster presentation at the 45th annual conference of Indian Society of Pedodontics and Preventive Dentistry."
+            year="2024"
           />
-          
+{/*           
           <AchievementCard
             icon={<Medal className="w-10 h-10 text-blue-500" />}
             title="Excellence in Dental Research"
@@ -81,7 +81,7 @@ const Achievements: React.FC = () => {
             title="Community Service Award"
             description="Honored for dedication to providing dental care to underserved children in rural communities."
             year="2021"
-          />
+          /> */}
         </div>
         
         <div className="flex flex-col gap-6">
@@ -92,24 +92,24 @@ const Achievements: React.FC = () => {
           
           <AchievementCard
             icon={<CertificateIcon className="w-10 h-10 text-dental-mint" />}
-            title="Advanced Pediatric Dental Care"
-            description="Specialized training in managing dental anxiety and behavioral issues in young patients."
-            year="2023"
+            title="BLS Training"
+            description="AHA approved BLS Training."
+            year="2025"
           />
-          
+
           <AchievementCard
             icon={<CertificateIcon className="w-10 h-10 text-dental-peach" />}
-            title="Pediatric Dental Emergency Management"
-            description="Certified in handling dental emergencies specific to children and adolescents."
-            year="2022"
+            title="Management of Class III Malocclusion"
+            description="ISPPD pre-conference course on management of class III malocclusion."
+            year="2024"
             className="transform md:translate-x-12"
           />
-          
+
           <AchievementCard
-            icon={<CertificateIcon className="w-10 h-10 text-dental-pink" />}
-            title="Special Needs Dentistry"
-            description="Specialized training in providing dental care for children with special healthcare needs."
-            year="2021"
+            icon={<CertificateIcon className="w-10 h-10 text-dental-mint" />}
+            title="Rotary Endodontics"
+            description="Specialized training for root canal treatment using rotary endodontic instruments."
+            year="2022"
           />
         </div>
       </div>
@@ -129,12 +129,7 @@ const Achievements: React.FC = () => {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {[
-              "International Association of Pediatric Dentistry",
-              "Dental Association Member",
-              "Society for Pediatric Oral Health",
-              "Child Dental Care Network",
-              "Pediatric Dental Research Group",
-              "National Pedodontic Society"
+              "Nepal Medical Association"
             ].map((membership, index) => (
               <div 
                 key={index}

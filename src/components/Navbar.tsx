@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
           className="flex items-center gap-2 text-lg font-medium"
         >
           <AnimatedTooth size={30} animationType="pulse" />
-          <span className="font-serif font-bold text-xl">Dr. Smile</span>
+          <span className="font-serif font-bold text-xl">Dr. Prakriti Basukala</span>
         </a>
 
         {/* Desktop Navigation */}
